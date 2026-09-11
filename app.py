@@ -1,0 +1,18 @@
+# app.py — Oficina de Conserto (versão inicial)
+from flask import Flask, render_template, request, redirect, url_for, session
+import models
+from blueprints.servicos import servicos_bp
+from blueprints.auth import auth_bp
+
+
+app = Flask(__name__)
+app.secret_key = "oficina-secreta"
+
+app.register_blueprint(auth_bp)
+app.register_blueprint(servicos_bp)
+
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
